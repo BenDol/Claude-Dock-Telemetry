@@ -1,0 +1,26 @@
+[
+  {
+    "deviceId": "15e1c041d10fdd70f294fae19bc3e6c838739d9019de8edefcdccf948b00f075",
+    "sessionId": "7875e216-96aa-4ab9-aaee-f51abef606a9",
+    "appVersion": "1.0.0",
+    "buildSha": "0628556e87f2cc4872df61ad48dbfb8193e3fdd1",
+    "os": {
+      "platform": "win32",
+      "arch": "x64",
+      "release": "10.0.26200"
+    },
+    "sessionDurationMs": 9439592,
+    "crashCount": 0,
+    "crashTypes": [],
+    "features": {
+      "gitManagerOpened": false,
+      "ciTabUsed": false,
+      "prTabUsed": false,
+      "pluginCount": 0,
+      "linkedModeEnabled": true
+    },
+    "terminalCount": 1,
+    "dockCount": 0,
+    "timestamp": "2026-04-05T02:20:45.480Z"
+  }
+]
