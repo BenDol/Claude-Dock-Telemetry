@@ -120,5 +120,29 @@
     "terminalCount": 10,
     "dockCount": 0,
     "timestamp": "2026-04-06T13:11:45.976Z"
+  },
+  {
+    "deviceId": "390be70d65524c38b3f00adac98faf3fadfc6658dd1a6649be0fc577b4ab00bf",
+    "sessionId": "1027ea62-249e-4b66-a3d0-e314f3d20f4d",
+    "appVersion": "1.0.0",
+    "buildSha": "74eb61335b88b690aa79fc49225ad86c10002847",
+    "os": {
+      "platform": "win32",
+      "arch": "x64",
+      "release": "10.0.26200"
+    },
+    "sessionDurationMs": 3981,
+    "crashCount": 0,
+    "crashTypes": [],
+    "features": {
+      "gitManagerOpened": false,
+      "ciTabUsed": false,
+      "prTabUsed": false,
+      "pluginCount": 0,
+      "linkedModeEnabled": true
+    },
+    "terminalCount": 0,
+    "dockCount": 0,
+    "timestamp": "2026-04-06T13:11:52.802Z"
   }
 ]
