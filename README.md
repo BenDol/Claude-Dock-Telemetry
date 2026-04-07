@@ -1,6 +1,6 @@
 # Claude Dock Telemetry Dashboard
 
-> Auto-generated on **2026-04-07 12:38 UTC** | Data: last 60 days (Mar 22, 2026 - Apr 07, 2026)
+> Auto-generated on **2026-04-07 13:19 UTC** | Data: last 60 days (Mar 22, 2026 - Apr 07, 2026)
 
 ## Key Metrics
 
@@ -42,6 +42,14 @@
 
 ![Feature Adoption](charts/feature_adoption.png)
 
+## Plugin Usage
+
+![Plugin Usage](charts/plugin_usage.png)
+
+## Plugin Enabled/Disabled
+
+![Plugin Enabled/Disabled](charts/plugin_enabled.png)
+
 ## OS Distribution
 
 ![OS Distribution](charts/os_distribution.png)
@@ -49,6 +57,10 @@
 ## Crash Rate
 
 ![Crash Rate](charts/crash_rate.png)
+
+## Update Patterns
+
+![Update Patterns](charts/update_patterns.png)
 
 ---
 

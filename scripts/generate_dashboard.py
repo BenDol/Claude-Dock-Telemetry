@@ -364,6 +364,106 @@ def chart_crash_rate(by_date: dict) -> str:
     return "crash_rate.png"
 
 
+def chart_plugin_usage(payloads: list[dict]) -> str:
+    """Chart plugin window opens across all sessions."""
+    plugin_opens: dict[str, int] = defaultdict(int)
+    for p in payloads:
+        plugins = p.get("plugins", {})
+        for pid, count in plugins.get("windowOpens", {}).items():
+            plugin_opens[pid] += count
+
+    if not plugin_opens:
+        return ""
+
+    # Sort by usage descending
+    sorted_plugins = sorted(plugin_opens.items(), key=lambda x: -x[1])
+    labels = [pid for pid, _ in sorted_plugins]
+    values = [count for _, count in sorted_plugins]
+
+    fig, ax = plt.subplots(figsize=(8, max(2.5, len(labels) * 0.6)))
+    bars = ax.barh(labels, values, color=PALETTE[:len(labels)], alpha=0.85)
+    ax.set_title("Plugin Usage (window opens)", fontweight="bold", pad=12)
+    ax.set_xlabel("Window Opens")
+    for bar, val in zip(bars, values):
+        ax.text(bar.get_width() + 0.3, bar.get_y() + bar.get_height() / 2,
+                str(val), va="center", fontsize=10, color="#c9d1d9")
+    ax.grid(True, axis="x")
+    ax.invert_yaxis()
+    save_chart(fig, "plugin_usage")
+    return "plugin_usage.png"
+
+
+def chart_plugin_enabled(payloads: list[dict]) -> str:
+    """Chart how often each plugin is enabled vs disabled across sessions."""
+    enabled_counts: dict[str, int] = defaultdict(int)
+    disabled_counts: dict[str, int] = defaultdict(int)
+    has_data = False
+
+    for p in payloads:
+        plugins = p.get("plugins", {})
+        for pid in plugins.get("enabled", []):
+            enabled_counts[pid] += 1
+            has_data = True
+        for pid in plugins.get("disabled", []):
+            disabled_counts[pid] += 1
+            has_data = True
+
+    if not has_data:
+        return ""
+
+    all_plugins = sorted(set(list(enabled_counts.keys()) + list(disabled_counts.keys())))
+    enabled_vals = [enabled_counts.get(p, 0) for p in all_plugins]
+    disabled_vals = [disabled_counts.get(p, 0) for p in all_plugins]
+
+    fig, ax = plt.subplots(figsize=(10, max(2.5, len(all_plugins) * 0.6)))
+    y = range(len(all_plugins))
+    ax.barh(y, enabled_vals, color=ACCENT2, alpha=0.8, label="Enabled")
+    ax.barh(y, [-d for d in disabled_vals], color=ACCENT4, alpha=0.6, label="Disabled")
+    ax.set_yticks(list(y))
+    ax.set_yticklabels(all_plugins)
+    ax.set_title("Plugin Enabled/Disabled (sessions)", fontweight="bold", pad=12)
+    ax.set_xlabel("Sessions")
+    ax.axvline(0, color="#30363d", linewidth=1)
+    ax.legend(facecolor="#161b22", edgecolor="#30363d", labelcolor="#c9d1d9")
+    ax.grid(True, axis="x")
+    ax.invert_yaxis()
+    save_chart(fig, "plugin_enabled")
+    return "plugin_enabled.png"
+
+
+def chart_update_patterns(payloads: list[dict]) -> str:
+    """Chart app and plugin update adoption."""
+    app_available = sum(1 for p in payloads if p.get("updates", {}).get("appUpdateAvailable"))
+    app_downloaded = sum(1 for p in payloads if p.get("updates", {}).get("appUpdateDownloaded"))
+    app_installed = sum(1 for p in payloads if p.get("updates", {}).get("appUpdateInstalled"))
+    plugin_available = sum(1 for p in payloads if p.get("updates", {}).get("pluginUpdatesAvailable", 0) > 0)
+    plugin_installed = sum(1 for p in payloads if len(p.get("updates", {}).get("pluginUpdatesInstalled", [])) > 0)
+    plugin_failed = sum(1 for p in payloads if len(p.get("updates", {}).get("pluginUpdatesFailed", [])) > 0)
+
+    labels = ["App: Available", "App: Downloaded", "App: Installed",
+              "Plugin: Available", "Plugin: Installed", "Plugin: Failed"]
+    values = [app_available, app_downloaded, app_installed,
+              plugin_available, plugin_installed, plugin_failed]
+
+    if sum(values) == 0:
+        return ""
+
+    colors = [ACCENT, ACCENT2, ACCENT3, ACCENT, ACCENT2, ACCENT4]
+
+    fig, ax = plt.subplots(figsize=(8, 3.5))
+    bars = ax.barh(labels, values, color=colors, alpha=0.85)
+    ax.set_title("Update Patterns (sessions)", fontweight="bold", pad=12)
+    ax.set_xlabel("Sessions")
+    for bar, val in zip(bars, values):
+        if val > 0:
+            ax.text(bar.get_width() + 0.3, bar.get_y() + bar.get_height() / 2,
+                    str(val), va="center", fontsize=10, color="#c9d1d9")
+    ax.grid(True, axis="x")
+    ax.invert_yaxis()
+    save_chart(fig, "update_patterns")
+    return "update_patterns.png"
+
+
 # ---------------------------------------------------------------------------
 # Summary stats
 # ---------------------------------------------------------------------------
@@ -464,6 +564,14 @@ def generate_readme(summary: dict, charts: list[str]) -> str:
 
 ![Feature Adoption](charts/feature_adoption.png)
 
+## Plugin Usage
+
+![Plugin Usage](charts/plugin_usage.png)
+
+## Plugin Enabled/Disabled
+
+![Plugin Enabled/Disabled](charts/plugin_enabled.png)
+
 ## OS Distribution
 
 ![OS Distribution](charts/os_distribution.png)
@@ -471,6 +579,10 @@ def generate_readme(summary: dict, charts: list[str]) -> str:
 ## Crash Rate
 
 ![Crash Rate](charts/crash_rate.png)
+
+## Update Patterns
+
+![Update Patterns](charts/update_patterns.png)
 
 ---
 
@@ -515,7 +627,7 @@ def main():
             charts.append(name)
             print(f"  Created {name}")
 
-    for gen in [chart_feature_adoption, chart_os_distribution]:
+    for gen in [chart_feature_adoption, chart_plugin_usage, chart_plugin_enabled, chart_os_distribution, chart_update_patterns]:
         name = gen(payloads)
         if name:
             charts.append(name)
