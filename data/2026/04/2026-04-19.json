@@ -1,0 +1,40 @@
+[
+  {
+    "deviceId": "390be70d65524c38b3f00adac98faf3fadfc6658dd1a6649be0fc577b4ab00bf",
+    "sessionId": "8d33b193-203d-4e72-a300-7e58a57afe92",
+    "appVersion": "1.0.0",
+    "buildSha": "72d10bf50bbdf157992b663cb3fca69f7a369da8",
+    "os": {
+      "platform": "win32",
+      "arch": "x64",
+      "release": "10.0.26200"
+    },
+    "sessionDurationMs": 115679185,
+    "crashCount": 0,
+    "crashTypes": [],
+    "features": {
+      "gitManagerOpened": false,
+      "ciTabUsed": true,
+      "prTabUsed": false,
+      "pluginCount": 0,
+      "linkedModeEnabled": true,
+      "issuesTabUsed": true
+    },
+    "plugins": {
+      "enabled": [],
+      "disabled": [],
+      "windowOpens": {}
+    },
+    "updates": {
+      "appUpdateAvailable": null,
+      "appUpdateDownloaded": false,
+      "appUpdateInstalled": false,
+      "pluginUpdatesAvailable": 0,
+      "pluginUpdatesInstalled": [],
+      "pluginUpdatesFailed": []
+    },
+    "terminalCount": 13,
+    "dockCount": 0,
+    "timestamp": "2026-04-19T04:13:28.377Z"
+  }
+]
