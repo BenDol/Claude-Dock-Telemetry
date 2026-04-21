@@ -221,5 +221,42 @@
     "terminalCount": 0,
     "dockCount": 0,
     "timestamp": "2026-04-21T02:03:07.906Z"
+  },
+  {
+    "deviceId": "390be70d65524c38b3f00adac98faf3fadfc6658dd1a6649be0fc577b4ab00bf",
+    "sessionId": "20269c81-516c-4e24-8cd9-838444e80a0a",
+    "appVersion": "1.0.0",
+    "buildSha": "6a708439a047a999d750bcc6866a6ea6d5e841de",
+    "os": {
+      "platform": "win32",
+      "arch": "x64",
+      "release": "10.0.26200"
+    },
+    "sessionDurationMs": 39666132,
+    "crashCount": 0,
+    "crashTypes": [],
+    "features": {
+      "gitManagerOpened": false,
+      "ciTabUsed": true,
+      "prTabUsed": false,
+      "pluginCount": 0,
+      "linkedModeEnabled": true
+    },
+    "plugins": {
+      "enabled": [],
+      "disabled": [],
+      "windowOpens": {}
+    },
+    "updates": {
+      "appUpdateAvailable": null,
+      "appUpdateDownloaded": false,
+      "appUpdateInstalled": false,
+      "pluginUpdatesAvailable": 0,
+      "pluginUpdatesInstalled": [],
+      "pluginUpdatesFailed": []
+    },
+    "terminalCount": 7,
+    "dockCount": 0,
+    "timestamp": "2026-04-21T13:04:29.552Z"
   }
 ]
