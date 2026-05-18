@@ -1,6 +1,6 @@
 # Claude Dock Telemetry Dashboard
 
-> Auto-generated on **2026-05-11 07:03 UTC** | Data: last 60 days (Mar 22, 2026 - Apr 22, 2026)
+> Auto-generated on **2026-05-18 07:15 UTC** | Data: last 60 days (Mar 22, 2026 - Apr 22, 2026)
 
 ## Key Metrics
 
