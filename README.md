@@ -1,20 +1,20 @@
 # Claude Dock Telemetry Dashboard
 
-> Auto-generated on **2026-06-01 07:37 UTC** | Data: last 60 days (Apr 02, 2026 - Apr 22, 2026)
+> Auto-generated on **2026-06-08 07:33 UTC** | Data: last 60 days (Apr 09, 2026 - Apr 22, 2026)
 
 ## Key Metrics
 
 | Metric | Value |
 |--------|-------|
-| Total Sessions | **279** |
+| Total Sessions | **164** |
 | Unique Devices | **5** |
-| Avg Daily Active Users | **2.5** |
-| Peak Daily Active Users | **5** |
-| Avg Session Duration | **294.6 min** |
-| Total Terminals Spawned | **785** |
-| Sessions with Crashes | **12** (4.3%) |
-| Days Tracked | **21** |
-| Platforms | Windows: 279 |
+| Avg Daily Active Users | **2.2** |
+| Peak Daily Active Users | **4** |
+| Avg Session Duration | **358.0 min** |
+| Total Terminals Spawned | **507** |
+| Sessions with Crashes | **8** (4.9%) |
+| Days Tracked | **14** |
+| Platforms | Windows: 164 |
 
 ---
 
